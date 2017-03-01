@@ -1,0 +1,27 @@
+{
+  "name": "funcker",
+  "version": "1.0.0",
+  "description": "Functional library",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.spec.js",
+    "test:watch": "watch 'npm run test' test lib -d -p=/node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roppa/funcker.git"
+  },
+  "keywords": [
+    "Functional"
+  ],
+  "author": "Mark Robson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roppa/funcker/issues"
+  },
+  "homepage": "https://github.com/roppa/funcker#readme",
+  "devDependencies": {
+    "tape": "^4.6.3",
+    "watch": "^1.0.2"
+  }
+}
