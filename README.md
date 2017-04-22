@@ -1,14 +1,14 @@
 # Funcker
 
-This is my little foray into the world of functional programming. I mean, I was sold when Curry was mentioned. I called it funcker func in functional, plus getting your head around fp can be a bit of a funcker.
+This is my little foray into the world of functional programming. I mean, I was sold when Curry was mentioned. I called it funcker - 'func' in functional, plus getting your head around fp can be a bit of a 'funcker'.
 
 Functional programming is one of the original paradigms of computing. Then things moved more towards a physical representation of the world - Object Oriented. Like the circle of life, we are moving back towards the past.
 
-Functions are fast and make good use of disc space. Bruce Lee said be like water. Well, the body is 76% water, yet we are so solid. The idea then is to loosen up, to flow, pure and dynamic.
+Functions are fast and make good use of disc space. Bruce Lee said be like water. Well, the body is 76% water, yet we are so solid. The idea then is to loosen up, to flow, to become pure and dynamic.
 
 Functions are essentially objects, first class citizens, and can move around as such. Hence we have 'higher order' functions - functions that take other functions as parameters and/or return functions.
 
-These functions should do one thing and one thing only. They should not modify anything other than in its own scope.
+Functions should do one thing and one thing only. They should not modify anything other than in its own scope.
 
 If you have done much TDD (please do!) you will know that as the tests get more specific, the code gets more generic. Same principle here - make the functions generic.
 
@@ -62,9 +62,19 @@ Benefits:
   <dd>Standard notation for fp: <code>function_name :: inputs -> output</code></dd>
 </dl>
 
-It is best practice that the number of parameters a function takes needs to be a maximum of two. A function really should do one thing and one thing only. Imagine how many branches there would be if a function got 3, 4, 5 or more parameters? That would indicate a complex function - not good.
+It is best practice that the number of parameters a function takes needs to be a maximum of two. A function really should do one thing and one thing only. Imagine how many branches there would be if a function got 3, 4, 5 or more parameters? That could indicate a complex function - not good.
 
 Lets get stuck in.
+
+## .get
+
+So with imperative coding, to get an attribute for each object in an array we would have to write a for loop, then access the property. Then when we need to do it somewhere else we would write another for loop ...
+
+Not with higher order functions. We simply want to 'get' a property. So we can pass this to a map or forEach like so:
+
+```
+[{ name: 'Billy', age: 42 }, { name: 'Bob', age: 24 }].map(funker.get('name'));
+```
 
 ## .curry
 
@@ -84,13 +94,3 @@ console.log(addToFifteen(15));  //30
 ```
 
 So what we have here is partial application. We can create a function that already has most of the data it needs, and then we can reuse that.
-
-## .get
-
-So with imperative coding, to get an attribute for each object in an array we would have to write a for loop, then access the property. Then when we need to do it somewhere else we would write another for loop ...
-
-Not with higher order functions. We simply want to 'get' a property. So we can pass this to a map or forEach like so:
-
-```
-[{ name: 'Billy', age: 42 }, { name: 'Bob', age: 24 }].map(funker.get('name')
-```
