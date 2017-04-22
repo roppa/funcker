@@ -62,6 +62,8 @@ Benefits:
   <dd>Standard notation for fp: <code>function_name :: inputs -> output</code></dd>
 </dl>
 
+## Arity
+
 It is best practice that the number of parameters a function takes needs to be a maximum of two. A function really should do one thing and one thing only. Imagine how many branches there would be if a function got 3, 4, 5 or more parameters? That could indicate a complex function - not good.
 
 Lets get stuck in.
