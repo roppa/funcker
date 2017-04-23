@@ -6,16 +6,12 @@ Functional programming is one of the original paradigms of computing. Then thing
 
 Functions are fast and make good use of disc space. Bruce Lee said be like water. Well, the body is 76% water, yet we are so solid. The idea then is to loosen up, to flow, to become pure and dynamic.
 
-Functions are essentially objects, first class citizens, and can move around as such. Hence we have 'higher order' functions - functions that take other functions as parameters and/or return functions.
-
-Functions should do one thing and one thing only. They should not modify anything other than in its own scope.
-
 If you have done much TDD (please do!) you will know that as the tests get more specific, the code gets more generic. Same principle here - make the functions generic.
 
-Benefits:
+Benefits of fp:
 
- - modularise your code, making it more reusable
- - reduce the complexity of your components
+ - modularise code, making it more reusable
+ - reduce the complexity of components
  - data flows along a pipeline
  - things less likely to break because there is no state or side effects
 
@@ -52,23 +48,63 @@ Benefits:
   <dd>The condition something is in at a particular time</dd>
   <dt>Stateless</dt>
   <dd>Not in a particular condition that persists</dd>
-  <dt>Arrity</dt>
+  <dt>Arity</dt>
   <dd>The number of arguments passed to a function. myFunc(1, 2, 3) has an arity of 3</dd>
   <dt>List comprehension</dt>
   <dd>Encapsulates the functionality of map and filter into for...of syntax</dd>
   <dt>Chain(ing)</dt>
   <dd>Being able to chain functions like a().b().c()</dd>
   <dt>:: (Has type)</dt>
-  <dd>Standard notation for fp: <code>function_name :: inputs -> output</code></dd>
+  <dd>Standard notation for fp: <code>function_name :: input_type -> value</code></dd>
 </dl>
+
+## Notation
+
+There is a standard notation for functional programming worth covering first:
+
+```
+f :: input -> output
+```
+
+The 'f' is a function, the parameters for that function come after the '::' (or sometimes a single ':'). The '::' means 'has type'. The return value of the function comes after the comma, and the '->' is a function with its returning value. So this notation:
+
+```
+f :: number -> number
+```
+
+Becomes:
+
+```
+const add10 = (x) => x + 10;
+```
+
+## Higher order functions
+
+Functions are essentially objects, first class citizens, and can move around as such. Hence we have 'higher order' functions - functions that take other functions as parameters and/or return functions.
 
 ## Arity
 
 It is best practice that the number of parameters a function takes needs to be a maximum of two. A function really should do one thing and one thing only. Imagine how many branches there would be if a function got 3, 4, 5 or more parameters? That could indicate a complex function - not good.
 
-Lets get stuck in.
+Functions should do one thing and one thing only. They should not modify anything other than in its own scope.
 
-## .get
+## Closure
+
+The definition of a closure is 'a function object that has a reference to the variables in the context it was created in'.
+
+## Mutability
+
+Functions should be pure. This could lead to problems when parameters are references to an object. If that object is changed within a function then a side effect results. Not good.
+
+## Monads
+
+A monad is an object.
+
+## Functions in the 'funker' example
+
+### .filter
+
+### .get
 
 So with imperative coding, to get an attribute for each object in an array we would have to write a for loop, then access the property. Then when we need to do it somewhere else we would write another for loop ...
 
@@ -78,21 +114,50 @@ Not with higher order functions. We simply want to 'get' a property. So we can p
 [{ name: 'Billy', age: 42 }, { name: 'Bob', age: 24 }].map(funker.get('name'));
 ```
 
-## .curry
+### .curry
 
-Currying takes 1 function with n arguments, and converts it to n functions with 1 argument.
+If you have ever used bind, then you are half way there. Currying is the same as bind, but applied in a different way. With bind a new function is returned with the 'this' parameter of the original function set to the first parameter of the bind function. This is partial application, and that is what currying is - partial application.
+
+Currying takes 1 function with n arguments, and converts it to n functions with 1 argument. We can then create a function that already has most of the data it needs held in a closure, and then we can reuse it.
 
 So instead of:
 
+```
 add(1, 2, 3, 4, 5, 6);
+```
 
-it becomes be add(1)(2)(3)(4)(5)(6)
+it becomes:
 
-so add(a, b)
+```
+add(1)(2)(3)(4)(5)(6)
+```
+
+That looks a bit weird and not very useful. So to convert a function that usually takes multiple params:
 
 ```
 let addToFifteen = funcker.curry(add, 1, 2, 3, 4, 5);
+let addToThirty = funcker.curry(add, 10, 10, 10);
 console.log(addToFifteen(15));  //30
+console.log(addToThirty(15));  //45
 ```
 
-So what we have here is partial application. We can create a function that already has most of the data it needs, and then we can reuse that.
+Another example:
+
+```
+const MESSAGES = {
+  OK: 200,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500,
+};
+
+const log = (message) => console.log(message);
+const getMessage = (messageId) => (message) => MESSAGES[messageId] + ' ' + message;
+
+const getOk = getMessage('OK');
+const getNotFound = getMessage('NOT_FOUND');
+const getInternalServerError = getMessage('INTERNAL_SERVER_ERROR');
+
+log(getOk('everything ok'));
+log(getNotFound('did not find anything'));
+log(getInternalServerError('something broke'));
+```
