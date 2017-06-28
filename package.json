@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "tape test/**/*.spec.js",
-    "test:watch": "watch 'npm run test' test lib -d -p=/node_modules/"
+    "lint": "eslint index.js test lib",
+    "dev": "watch 'npm run test' test lib -d -p=/node_modules/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/roppa/funcker.git"
+    "url": "https://github.com/roppa/funcker.git"
   },
   "keywords": [
     "Functional"
@@ -21,6 +22,11 @@
   },
   "homepage": "https://github.com/roppa/funcker#readme",
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^6.0.0",
+    "eslint-plugin-react": "^7.1.0",
     "tape": "^4.6.3",
     "watch": "^1.0.2"
   }
