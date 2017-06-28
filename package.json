@@ -4,8 +4,9 @@
   "description": "Functional library",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/**/*.spec.js",
-    "lint": "eslint index.js test lib",
+    "test": "npm run lint && npm run test:tape && nyc report",
+    "lint": "eslint test lib index.js",
+    "test:tape": "nyc --reporter=lcov tape test/**/*.spec.js",
     "dev": "watch 'npm run test' test lib -d -p=/node_modules/"
   },
   "repository": {
@@ -25,9 +26,13 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-jsx-a11y": "^6.0.0",
+    "eslint-plugin-jsx-a11y": "5.1.0",
     "eslint-plugin-react": "^7.1.0",
-    "tape": "^4.6.3",
+    "nyc": "11.0.3",
+    "tape": "4.7.0",
     "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "locate-path": "2.0.0"
   }
 }
