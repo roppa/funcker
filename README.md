@@ -110,7 +110,7 @@ So with imperative coding, to get an attribute for each object in an array we wo
 
 Not with higher order functions. We simply want to 'get' a property. So we can pass this to a map or forEach like so:
 
-```
+```javascript
 [{ name: 'Billy', age: 42 }, { name: 'Bob', age: 24 }].map(funker.get('name'));
 ```
 
@@ -139,25 +139,4 @@ let addToFifteen = funcker.curry(add, 1, 2, 3, 4, 5);
 let addToThirty = funcker.curry(add, 10, 10, 10);
 console.log(addToFifteen(15));  //30
 console.log(addToThirty(15));  //45
-```
-
-Another example:
-
-```javascript
-const MESSAGES = {
-  OK: 200,
-  NOT_FOUND: 404,
-  INTERNAL_SERVER_ERROR: 500,
-};
-
-const log = (message) => console.log(message);
-const getMessage = (messageId) => (message) => MESSAGES[messageId] + ' ' + message;
-
-const getOk = getMessage('OK');
-const getNotFound = getMessage('NOT_FOUND');
-const getInternalServerError = getMessage('INTERNAL_SERVER_ERROR');
-
-log(getOk('everything ok'));
-log(getNotFound('did not find anything'));
-log(getInternalServerError('something broke'));
 ```
