@@ -74,7 +74,7 @@ f :: number -> number
 
 Becomes:
 
-```
+```javascript
 const add10 = (x) => x + 10;
 ```
 
@@ -122,19 +122,19 @@ Currying takes 1 function with n arguments, and converts it to n functions with 
 
 So instead of:
 
-```
+```javascript
 add(1, 2, 3, 4, 5, 6);
 ```
 
 it becomes:
 
-```
+```javascript
 add(1)(2)(3)(4)(5)(6)
 ```
 
 That looks a bit weird and not very useful. So to convert a function that usually takes multiple params:
 
-```
+```javascript
 let addToFifteen = funcker.curry(add, 1, 2, 3, 4, 5);
 let addToThirty = funcker.curry(add, 10, 10, 10);
 console.log(addToFifteen(15));  //30
@@ -143,7 +143,7 @@ console.log(addToThirty(15));  //45
 
 Another example:
 
-```
+```javascript
 const MESSAGES = {
   OK: 200,
   NOT_FOUND: 404,
