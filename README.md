@@ -102,18 +102,6 @@ A monad is an object.
 
 ## Functions in the 'funker' example
 
-### .filter
-
-### .get
-
-So with imperative coding, to get an attribute for each object in an array we would have to write a for loop, then access the property. Then when we need to do it somewhere else we would write another for loop ...
-
-Not with higher order functions. We simply want to 'get' a property. So we can pass this to a map or forEach like so:
-
-```javascript
-[{ name: 'Billy', age: 42 }, { name: 'Bob', age: 24 }].map(funker.get('name'));
-```
-
 ### .curry
 
 If you have ever used bind, then you are half way there. Currying is the same as bind, but applied in a different way. With bind a new function is returned with the 'this' parameter of the original function set to the first parameter of the bind function. This is partial application, and that is what currying is - partial application.
@@ -139,4 +127,26 @@ let addToFifteen = funcker.curry(add, 1, 2, 3, 4, 5);
 let addToThirty = funcker.curry(add, 10, 10, 10);
 console.log(addToFifteen(15));  //30
 console.log(addToThirty(15));  //45
+```
+
+### .filter
+
+### .get
+
+So with imperative coding, to get an attribute for each object in an array we would have to write a for loop, then access the property. Then when we need to do it somewhere else we would write another for loop ...
+
+Not with higher order functions. We simply want to 'get' a property. So we can pass this to a map or forEach like so:
+
+```javascript
+[{ name: 'Billy', age: 42 }, { name: 'Bob', age: 24 }].map(funker.get('name'));
+```
+
+### .only
+
+Get a new object with only the fields specified in a space delimited string.
+
+```javascript
+const getNameAge = only('name age');
+const userObject = { name: 'Tad', age: 40, secret: 'shhh, don\'t tell anyone' };
+console.log(getNameAge(userObject)); // { name: 'Tad', age: 40 }
 ```
