@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/roppa/funcker.svg?style=svg)](https://circleci.com/gh/roppa/funcker)
+
 # Funcker
 
 This is my little foray into the world of functional programming. I mean, I was sold when Curry was mentioned. I called it funcker - 'func' in functional, plus getting your head around fp can be a bit of a 'funcker'.
