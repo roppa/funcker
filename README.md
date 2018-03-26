@@ -131,6 +131,7 @@ console.log(addToThirty(15));  //45
 
 ### .filter
 
+Curried Array.filter
 ### .get
 
 So with imperative coding, to get an attribute for each object in an array we would have to write a for loop, then access the property. Then when we need to do it somewhere else we would write another for loop ...
