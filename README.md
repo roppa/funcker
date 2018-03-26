@@ -153,3 +153,15 @@ const getNameAge = only('name age');
 const userObject = { name: 'Tad', age: 40, secret: 'shhh, don\'t tell anyone' };
 console.log(getNameAge(userObject)); // { name: 'Tad', age: 40 }
 ```
+
+### .compose
+
+Function composition: s: f1 => f2 => f3 => f1(f2(f3(s)))
+
+Takes an array of functions and applies them in reverse order to the supplied value.
+
+```javascript
+compose([f1, f2, f3], value) => f1(f2(f3(value)))
+```
+
+
