@@ -23,4 +23,6 @@ jobs:
 
       - run: npm test
 
-
+general:
+  artifacts:
+    - "./coverage/lcov-report/"
