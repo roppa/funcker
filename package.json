@@ -30,9 +30,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.3",
-    "locate-path": "2.0.0",
-    "nyc": "^11.6.0",
-    "tape": "4.7.0"
+    "locate-path": "2.0.0"
   },
   "dependencies": {}
 }
